@@ -11,6 +11,8 @@ jobs:
     env:
       DOTNET_NOLOGO: true
       DOTNET_CLI_TELEMETRY_OPTOUT: 1
+      SLN_PATH: aulas/WinFormsAzureSqlSolution/WinFormsAzureSql.sln
+      TEST_CSPROJ: aulas/WinFormsAzureSqlSolution/WinFormsAzureSql.Tests/WinFormsAzureSql.Tests.csproj
 
     steps:
       - name: Checkout
@@ -23,67 +25,22 @@ jobs:
             8.0.x
             7.0.x
 
-      - name: Discover solution / projects
-        id: discover
-        shell: pwsh
+      - name: Restore (solution)
+        run: dotnet restore "$env:SLN_PATH"
+
+      - name: Build (solution)
+        run: dotnet build "$env:SLN_PATH" -c Release --no-restore
+     
+      - name: Test (solution)
         run: |
-          Write-Host "PWD: $PWD"
-          $solution = Get-ChildItem -Recurse -Filter *.sln | Select-Object -First 1
-          if ($solution) {
-            Write-Host "Found solution: $($solution.FullName)"
-            "path=$($solution.FullName)" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-            "mode=solution" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-            exit 0
-          }
-
-          $testProjects = Get-ChildItem -Recurse -Filter *Tests.csproj
-          if ($testProjects) {
-            $joined = ($testProjects | ForEach-Object { $_.FullName }) -join "`n"
-            Write-Host "Found test projects:`n$joined"
-            "testList=$joined" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-            "mode=test-list" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-            exit 0
-          }
-
-          $anyProject = Get-ChildItem -Recurse -Filter *.csproj | Select-Object -First 1
-          if ($anyProject) {
-            Write-Host "No tests found. Will run 'dotnet test' on first project: $($anyProject.FullName)"
-            "path=$($anyProject.FullName)" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-            "mode=single-project" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-            exit 0
-          }
-
-          Write-Error "Nenhum .sln ou .csproj encontrado no repositório."
-          exit 1
-
-      - name: Restore & Build (solution)
-        if: steps.discover.outputs.mode == 'solution'
+          dotnet test "$env:SLN_PATH" -c Release --no-build `
+            --logger "trx;LogFileName=solution-tests.trx" `
+            --results-directory "$env:RUNNER_TEMP\test-results"
+    
+      - name: Test (specific test project)
         run: |
-          dotnet restore "${{ steps.discover.outputs.path }}"
-          dotnet build   "${{ steps.discover.outputs.path }}" -c Release --no-restore
-
-      - name: Test solution (manual path)
-        run: dotnet test ./aulas/WinFormsAzureSqlSolution/WinFormsAzureSqlSolution.sln -c Release --no-build
-
-      - name: Test (each *Tests.csproj)
-        if: steps.discover.outputs.mode == 'test-list'
-        shell: pwsh
-        run: |
-          $results = "$env:RUNNER_TEMP\test-results"
-          New-Item -Force -ItemType Directory -Path $results | Out-Null
-          $list = "${{ steps.discover.outputs.testList }}" -split "`n"
-          foreach ($proj in $list) {
-            $name = [IO.Path]::GetFileNameWithoutExtension($proj)
-            dotnet test "$proj" -c Release --no-build `
-              --logger "trx;LogFileName=$name.trx" `
-              --results-directory $results
-          }
-
-      - name: Test (single project fallback)
-        if: steps.discover.outputs.mode == 'single-project'
-        run: |
-          dotnet test "${{ steps.discover.outputs.path }}" -c Release `
-            --logger "trx;LogFileName=project.trx" `
+          dotnet test "$env:TEST_CSPROJ" -c Release --no-build `
+            --logger "trx;LogFileName=project-tests.trx" `
             --results-directory "$env:RUNNER_TEMP\test-results"
 
       - name: Publish Test Results
