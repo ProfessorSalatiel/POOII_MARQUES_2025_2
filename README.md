@@ -39,7 +39,14 @@ git config --list
 ---
 
 ## 3️⃣ Clonando o repositório da disciplina
-Durante as aulas, vamos clonar o repositório com o código base.
+Durante as aulas, vamos clonar o repositório com o código base. Para habilitar o proxy no computador do laboratório rodar a seguinte config:
+
+```bash
+git config --http://192.168.0.1:8080
+git config --https://192.168.0.1:8080
+```
+
+**Observação:** Essa ação para utilizarmos config para o proxy será necessária somente na aulas que serão ministradas nos laboratórios 1 e 2!
 
 No **Git Bash**, escolha a pasta onde deseja salvar os arquivos e rode:
 
