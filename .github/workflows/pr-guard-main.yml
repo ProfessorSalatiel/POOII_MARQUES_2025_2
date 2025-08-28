@@ -1,0 +1,20 @@
+name: Guard main PR base
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches: [main]
+
+jobs:
+  allow-only-release-into-main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail if head branch is not release/*
+        run: |
+          echo "BASE: ${{ github.base_ref }}"
+          echo "HEAD: ${{ github.head_ref }}"
+          if [[ "${{ github.base_ref }}" == "main" && ! "${{ github.head_ref }}" =~ ^release\/.+ ]]; then
+            echo "❌ Somente PRs a partir de 'release/*' podem apontar para 'main'."
+            echo "Crie uma branch release/XYZ a partir de develop e refaça o PR."
+            exit 1
+          fi
