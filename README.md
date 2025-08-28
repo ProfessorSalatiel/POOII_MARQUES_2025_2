@@ -119,4 +119,4 @@ git pull
 
 📌 **Professor responsável**: [Salatiel Luz Marinho](https://github.com/ProfessorSalatiel)  
 📚 **Disciplina**: Programação Orientada a Objetos II  
-🏫 **Curso**: Análise e Desenvolvimento de Sistemas  
+🏫 **Curso**: Análise e Desenvolvimento de Sistemas
