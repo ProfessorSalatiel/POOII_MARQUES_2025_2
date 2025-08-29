@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using WinFormsAzureSql.Data;
-using WinFormsAzureSql.Models;
+using WinFormsPostgreSql.Data;
+using WinFormsPostgreSql.Models;
 
-namespace WinFormsAzureSql.Services
+namespace WinFormsPostgreSql.Services
 {
     public class AlunoService
     {
@@ -16,7 +16,7 @@ namespace WinFormsAzureSql.Services
 
         public IEnumerable<Aluno> Listar() => _repo.Listar();
 
-        public int Upsert(Aluno a)
+        public Int64 Upsert(Aluno a)
         {
             Validar(a);
             if (a.Id == 0) return _repo.Inserir(a);
@@ -24,7 +24,7 @@ namespace WinFormsAzureSql.Services
             return a.Id;
         }
 
-        public void Delete(int id)
+        public void Delete(Int64 id)
         {
             if (id <= 0) throw new ArgumentException("Id inválido para exclusão.");
             _repo.Remover(id);

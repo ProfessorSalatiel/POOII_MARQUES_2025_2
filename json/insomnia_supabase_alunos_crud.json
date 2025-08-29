@@ -1,0 +1,215 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2025-08-29T14:35:03.744026Z",
+  "__export_source": "chatgpt-helper",
+  "resources": [
+    {
+      "_id": "wrk_33e55b072ace4",
+      "parentId": null,
+      "_type": "workspace",
+      "name": "Supabase Lab - Alunos CRUD",
+      "description": "CRUD via PostgREST (Supabase) para tabela public.alunos"
+    },
+    {
+      "_id": "env_ff8cb9e340374",
+      "parentId": "wrk_33e55b072ace4",
+      "_type": "environment",
+      "name": "Base Environment",
+      "data": {
+        "SUPABASE_URL": "https://SEU_PROJETO.supabase.co",
+        "SUPABASE_ANON_KEY": "COLOQUE_SUA_ANON_KEY_AQUI",
+        "ID": 1
+      }
+    },
+    {
+      "_id": "fld_d3da4da14c5b4",
+      "parentId": "wrk_33e55b072ace4",
+      "_type": "request_group",
+      "name": "alunos",
+      "environment": {},
+      "metaSortKey": -1
+    },
+    {
+      "_id": "req_ec23b2bdde2c4",
+      "parentId": "fld_d3da4da14c5b4",
+      "_type": "request",
+      "name": "GET /alunos (lista, order=id.desc)",
+      "method": "GET",
+      "url": "{{ SUPABASE_URL }}/rest/v1/alunos?select=*&order=id.desc",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "apikey",
+          "value": "{{ SUPABASE_ANON_KEY }}"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ SUPABASE_ANON_KEY }}"
+        },
+        {
+          "name": "Accept",
+          "value": "application/json"
+        }
+      ]
+    },
+    {
+      "_id": "req_5d31b7b817494",
+      "parentId": "fld_d3da4da14c5b4",
+      "_type": "request",
+      "name": "GET /alunos?id=eq.{ID}",
+      "method": "GET",
+      "url": "{{ SUPABASE_URL }}/rest/v1/alunos?id=eq.{{ ID }}&select=*",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "apikey",
+          "value": "{{ SUPABASE_ANON_KEY }}"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ SUPABASE_ANON_KEY }}"
+        },
+        {
+          "name": "Accept",
+          "value": "application/json"
+        }
+      ]
+    },
+    {
+      "_id": "req_b1fac220c2864",
+      "parentId": "fld_d3da4da14c5b4",
+      "_type": "request",
+      "name": "POST /alunos (create, returning *)",
+      "method": "POST",
+      "url": "{{ SUPABASE_URL }}/rest/v1/alunos",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"nome\": \"Ana Souza\", \"email\": \"ana@example.com\"}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "apikey",
+          "value": "{{ SUPABASE_ANON_KEY }}"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ SUPABASE_ANON_KEY }}"
+        },
+        {
+          "name": "Accept",
+          "value": "application/json"
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Prefer",
+          "value": "return=representation"
+        }
+      ]
+    },
+    {
+      "_id": "req_3bebbb6431614",
+      "parentId": "fld_d3da4da14c5b4",
+      "_type": "request",
+      "name": "PATCH /alunos?id=eq.{ID} (update, returning *)",
+      "method": "PATCH",
+      "url": "{{ SUPABASE_URL }}/rest/v1/alunos?id=eq.{{ ID }}",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"nome\": \"Ana Souza (editada)\", \"email\": \"ana@example.com\"}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "apikey",
+          "value": "{{ SUPABASE_ANON_KEY }}"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ SUPABASE_ANON_KEY }}"
+        },
+        {
+          "name": "Accept",
+          "value": "application/json"
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Prefer",
+          "value": "return=representation"
+        }
+      ]
+    },
+    {
+      "_id": "req_809819ce62054",
+      "parentId": "fld_d3da4da14c5b4",
+      "_type": "request",
+      "name": "DELETE /alunos?id=eq.{ID} (returning *)",
+      "method": "DELETE",
+      "url": "{{ SUPABASE_URL }}/rest/v1/alunos?id=eq.{{ ID }}",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "apikey",
+          "value": "{{ SUPABASE_ANON_KEY }}"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ SUPABASE_ANON_KEY }}"
+        },
+        {
+          "name": "Accept",
+          "value": "application/json"
+        },
+        {
+          "name": "Prefer",
+          "value": "return=representation"
+        }
+      ]
+    },
+    {
+      "_id": "req_9e3fa99bc8de4",
+      "parentId": "fld_d3da4da14c5b4",
+      "_type": "request",
+      "name": "POST /alunos?on_conflict=email (upsert por email)",
+      "method": "POST",
+      "url": "{{ SUPABASE_URL }}/rest/v1/alunos?on_conflict=email",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"nome\": \"Ana Atualizada\", \"email\": \"ana@example.com\"}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "apikey",
+          "value": "{{ SUPABASE_ANON_KEY }}"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ SUPABASE_ANON_KEY }}"
+        },
+        {
+          "name": "Accept",
+          "value": "application/json"
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Prefer",
+          "value": "resolution=merge-duplicates,return=representation"
+        }
+      ]
+    }
+  ]
+}

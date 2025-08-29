@@ -1,11 +1,11 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Linq;
-using WinFormsAzureSql.Models;
-using WinFormsAzureSql.Services;
-using WinFormsAzureSql.Tests.Fakes;
+using WinFormsPostgreSql.Models;
+using WinFormsPostgreSql.Services;
+using WinFormsPostgreSql.Tests.Fakes;
 
-namespace WinFormsAzureSql.Tests
+namespace WinFormsPostgreSql.Tests
 {
     [TestClass]
     public class AlunoServiceTests

@@ -1,11 +1,11 @@
 using System;
 using System.Linq;
 using System.Windows.Forms;
-using WinFormsAzureSql.Models;
-using WinFormsAzureSql.Services;
-using WinFormsAzureSql.Data;
+using WinFormsPostgreSql.Data;
+using WinFormsPostgreSql.Models;
+using WinFormsPostgreSql.Services;
 
-namespace WinFormsAzureSql
+namespace WinFormsPostgreSql
 {
     public partial class Form1 : Form
     {
@@ -46,6 +46,7 @@ namespace WinFormsAzureSql
                 var aluno = new Aluno { Id = id, Nome = txtNome.Text.Trim(), Email = txtEmail.Text.Trim() };
                 var savedId = _service.Upsert(aluno);
                 MessageBox.Show(id == 0 ? $"Inserido! Id: {savedId}" : "Atualizado com sucesso!");
+                btnSalvar.Text = "Salvar";
                 CarregarGrid();
             }
             catch (Exception ex)
@@ -80,6 +81,7 @@ namespace WinFormsAzureSql
             txtNome.Text = aluno.Nome;
             txtEmail.Text = aluno.Email;
             txtNome.Focus();
+            btnSalvar.Text = "Atualizar";
         }
     }
 }
