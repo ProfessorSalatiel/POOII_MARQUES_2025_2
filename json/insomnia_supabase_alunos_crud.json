@@ -1,8 +1,7 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2025-08-29T14:35:03.744026Z",
-  "__export_source": "chatgpt-helper",
+  "__export_date": "2025-08-29T14:35:03.744026Z",  
   "resources": [
     {
       "_id": "wrk_33e55b072ace4",
@@ -17,8 +16,8 @@
       "_type": "environment",
       "name": "Base Environment",
       "data": {
-        "SUPABASE_URL": "https://SEU_PROJETO.supabase.co",
-        "SUPABASE_ANON_KEY": "COLOQUE_SUA_ANON_KEY_AQUI",
+        "SUPABASE_URL": "vwfntqecmdatvmnwvemn.supabase.co",
+        "SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ3Zm50cWVjbWRhdHZtbnd2ZW1uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY0NzQwMDQsImV4cCI6MjA3MjA1MDAwNH0.vez95TeDejuFHbfwMONqDmk3ZNjqEs5Mb7876wsvuWQ",
         "ID": 1
       }
     },
