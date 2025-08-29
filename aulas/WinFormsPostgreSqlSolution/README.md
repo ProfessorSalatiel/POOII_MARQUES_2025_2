@@ -3,13 +3,13 @@
 Este repositório contém um exemplo completo de **Windows Forms (C#)** com **CRUD** em **Postgre**, incluindo **testes unitários (MSTest)**.
 
 ## Estrutura
-- `WinFormsAzureSql/` — Aplicação WinForms
+- `WinFormsAPostgreSql/` — Aplicação WinForms
   - `Models/Aluno.cs`
   - `Data/IAlunoRepository.cs` e `AlunoRepository.cs` (ADO.NET com `Microsoft.Data.SqlClient`)
   - `Services/AlunoService.cs` (validações e orquestração)
   - `Form1.*` (UI com DataGridView + TextBoxes + Botões)
   - `App.config` (connection string)
-- `WinFormsAzureSql.Tests/` — Testes unitários MSTest
+- `WinFormsPostgreSql.Tests/` — Testes unitários MSTest
   - `Fakes/FakeAlunoRepository.cs` (repositório em memória)
   - `AlunoServiceTests.cs`
 
@@ -109,12 +109,12 @@ values ('Ana Souza','ana@example.com');
 ```
 
 ## Como executar
-1. Abra a solução `WinFormsAzureSql.sln` no Visual Studio.
+1. Abra a solução `WinFormsPostgreSql.sln` no Visual Studio.
 2. Configure a connection string (App.config).
-3. Selecione o projeto **WinFormsAzureSql** como *Startup Project* e rode (F5).
+3. Selecione o projeto **WinFormsPostgreSql** como *Startup Project* e rode (F5).
 
 ## Testes
-- Projeto `WinFormsAzureSql.Tests` (MSTest).
+- Projeto `WinFormsPostgreSql.Tests` (MSTest).
 - Execute os testes pelo Test Explorer no Visual Studio.
 
 ## Referências
