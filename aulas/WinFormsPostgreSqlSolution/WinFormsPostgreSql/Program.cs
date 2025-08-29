@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace WinFormsAzureSql
+namespace WinFormsPostgreSql
 {
     internal static class Program
     {

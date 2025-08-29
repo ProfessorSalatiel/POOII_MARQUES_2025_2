@@ -1,4 +1,4 @@
-namespace WinFormsAzureSql
+namespace WinFormsPostgreSql
 {
     partial class Form1
     {

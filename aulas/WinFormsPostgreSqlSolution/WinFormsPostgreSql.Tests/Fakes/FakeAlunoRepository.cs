@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-using WinFormsAzureSql.Data;
-using WinFormsAzureSql.Models;
+using WinFormsPostgreSql.Data;
+using WinFormsPostgreSql.Models;
 
-namespace WinFormsAzureSql.Tests.Fakes
+namespace WinFormsPostgreSql.Tests.Fakes
 {
     public class FakeAlunoRepository : IAlunoRepository
     {
@@ -12,7 +12,7 @@ namespace WinFormsAzureSql.Tests.Fakes
 
         public IEnumerable<Aluno> Listar() => _storage.OrderByDescending(x => x.Id);
 
-        public int Inserir(Aluno a)
+        public long Inserir(Aluno a)
         {
             a.Id = _nextId++;
             _storage.Add(a);
@@ -25,7 +25,7 @@ namespace WinFormsAzureSql.Tests.Fakes
             if (idx >= 0) _storage[idx] = a;
         }
 
-        public void Remover(int id)
+        public void Remover(long id)
         {
             _storage.RemoveAll(x => x.Id == id);
         }

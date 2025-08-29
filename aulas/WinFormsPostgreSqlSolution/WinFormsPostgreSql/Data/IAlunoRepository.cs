@@ -1,13 +1,14 @@
+using System;
 using System.Collections.Generic;
-using WinFormsAzureSql.Models;
+using WinFormsPostgreSql.Models;
 
-namespace WinFormsAzureSql.Data
+namespace WinFormsPostgreSql.Data
 {
     public interface IAlunoRepository
     {
         IEnumerable<Aluno> Listar();
-        int Inserir(Aluno a);
+        Int64 Inserir(Aluno a);
         void Atualizar(Aluno a);
-        void Remover(int id);
+        void Remover(Int64 id);
     }
 }

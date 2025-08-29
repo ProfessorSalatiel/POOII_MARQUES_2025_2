@@ -11,8 +11,8 @@ jobs:
     env:
       DOTNET_NOLOGO: true
       DOTNET_CLI_TELEMETRY_OPTOUT: 1
-      SLN_PATH: aulas/WinFormsAzureSqlSolution/WinFormsAzureSql.sln
-      TEST_CSPROJ: aulas/WinFormsAzureSqlSolution/WinFormsAzureSql.Tests/WinFormsAzureSql.Tests.csproj
+      SLN_PATH: aulas/WinFormsPostgreSqlSolution/WinFormsPostgreSql.sln
+      TEST_CSPROJ: aulas/WinFormsPostgreSqlSolution/WinFormsPostgreSql.Tests/WinFormsPostgreSql.Tests.csproj
 
     steps:
       - name: Checkout
