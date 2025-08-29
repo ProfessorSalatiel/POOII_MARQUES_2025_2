@@ -51,7 +51,7 @@ git config --global https.proxy https://192.168.0.1:8080
 No **Git Bash**, escolha a pasta onde deseja salvar os arquivos e rode:
 
 ```bash
-git clone https://github.com/ProfessorSalatiel/POOII
+git clone https://github.com/ProfessorSalatiel/POOII.git
 ```
 
 Isso vai criar uma pasta chamada **POOII** com o conteúdo do repositório.
