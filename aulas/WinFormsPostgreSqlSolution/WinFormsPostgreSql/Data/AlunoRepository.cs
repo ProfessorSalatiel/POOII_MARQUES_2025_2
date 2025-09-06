@@ -21,7 +21,8 @@ namespace WinFormsPostgreSql.Data
                 throw new InvalidOperationException("Connection string não encontrada. Defina SQL_CONNECTION_STRING ou configure em App.config.");
         }
 
-        public IEnumerable<Aluno> Listar()
+        public IEnumerable<Aluno> Listar
+            ()
         {
             var lista = new List<Aluno>();
             const string sql = "select id, nome, email from public.alunos order by id desc";
