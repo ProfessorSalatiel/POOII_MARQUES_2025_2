@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace ControleChamados
+namespace Desktop.Chamado
 {
     public partial class frmIncluirChamado : Form
     {

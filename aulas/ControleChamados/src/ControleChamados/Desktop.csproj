@@ -50,15 +50,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmIncluirChamado.cs">
+    <Compile Include="Chamado\frmIncluirChamado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmIncluirChamado.Designer.cs">
+    <Compile Include="Chamado\frmIncluirChamado.Designer.cs">
       <DependentUpon>frmIncluirChamado.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmIncluirChamado.resx">
+    <EmbeddedResource Include="Chamado\frmIncluirChamado.resx">
       <DependentUpon>frmIncluirChamado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

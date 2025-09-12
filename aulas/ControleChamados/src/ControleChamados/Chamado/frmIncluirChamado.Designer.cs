@@ -1,4 +1,4 @@
-﻿namespace ControleChamados
+﻿namespace Desktop.Chamado
 {
     partial class frmIncluirChamado
     {
