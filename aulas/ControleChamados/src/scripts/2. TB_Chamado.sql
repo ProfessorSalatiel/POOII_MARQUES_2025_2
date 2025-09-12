@@ -11,8 +11,8 @@ GO
 CREATE TABLE [dbo].[TB_Chamado](
 	[id_chamado] [bigint] IDENTITY(1,1) NOT NULL,
 	[desc_chamado] [varchar](50) NULL,
-	[status_chamado] [bit] NULL,
-	[dt_criacao_chamado] [datetime] NULL,
+	[status_chamado] NOT NULL CONSTRAINT DF_TB_Chamado_Status DEFAULT (1),
+	[dt_criacao_chamado] [datetime] NOT NULL CONSTRAINT DF_TB_Chamado_DataCriacao DEFAULT (GETDATE()),
  CONSTRAINT [PK_TB_Chamado] PRIMARY KEY CLUSTERED 
 (
 	[id_chamado] ASC

@@ -1,0 +1,15 @@
+@page "{id:long}"
+@model DeleteModel
+@{
+    ViewData["Title"] = "Excluir Chamado";
+}
+
+<h2>Confirmação de exclusão</h2>
+
+<p>Tem certeza que deseja excluir o chamado <strong>@Model.Chamado?.DescChamado</strong> ?</p>
+
+<form method="post">
+    <input type="hidden" asp-for="Chamado.IdChamado" />
+    <button class="btn btn-danger">Excluir</button>
+    <a asp-page="/Index" class="btn btn-secondary">Cancelar</a>
+</form>
