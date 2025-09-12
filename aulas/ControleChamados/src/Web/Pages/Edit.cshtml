@@ -1,0 +1,26 @@
+@page "{id:long}"
+@model EditModel
+@{
+    ViewData["Title"] = "Editar Chamado";
+}
+
+<h2>Editar Chamado</h2>
+
+<form method="post" class="row g-3">
+    <input type="hidden" asp-for="Chamado.IdChamado" />
+    <div class="col-12">
+        <label class="form-label">Descrição</label>
+        <input asp-for="Chamado.DescChamado" class="form-control" maxlength="50" />
+    </div>
+    <div class="col-6">
+        <label class="form-label">Status</label>
+        <select asp-for="Chamado.StatusChamado" class="form-select">
+            <option value="false">Aberto</option>
+            <option value="true">Fechado</option>
+        </select>
+    </div>
+    <div class="col-12">
+        <button class="btn btn-primary">Salvar</button>
+        <a asp-page="/Index" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>

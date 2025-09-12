@@ -1,0 +1,38 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Lista de Chamados";
+}
+
+<div class="d-flex justify-content-between mb-3">
+    <h2>Lista de Chamados</h2>
+    <a class="btn btn-success" asp-page="/Create">Novo Chamado</a>
+</div>
+
+<table class="table table-hover table-striped">
+    <thead class="table-primary">
+        <tr>
+            <th>ID</th>
+            <th>Descrição</th>
+            <th>Status</th>
+            <th>Data Criação</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach(var c in Model.Chamados)
+    {
+        <tr>
+            <td>@c.IdChamado</td>
+            <td>@c.DescChamado</td>
+            <td>@(c.StatusChamado ? "Fechado" : "Aberto")</td>
+            <td>@(c.DtCriacaoChamado?.ToString("g") ?? "-")</td>
+            <td>
+                <a class="btn btn-sm btn-primary" asp-page="/Edit" asp-route-id="@c.IdChamado">Editar</a>
+                <a class="btn btn-sm btn-info" asp-page="/Details" asp-route-id="@c.IdChamado">Detalhes</a>
+                <a class="btn btn-sm btn-danger" asp-page="/Delete" asp-route-id="@c.IdChamado">Excluir</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
