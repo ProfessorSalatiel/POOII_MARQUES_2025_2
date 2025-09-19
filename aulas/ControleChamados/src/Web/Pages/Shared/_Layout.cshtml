@@ -26,7 +26,7 @@
     <header class="bg-light py-4 mb-4">
         <div class="container">
             <h1 class="display-6">Controle de Chamados</h1>
-            <p class="lead">Aplicação exemplo com Razor Pages, Bootstrap e ADO.NET</p>
+            <p class="lead">Aplicação com Razor Pages, Bootstrap e ADO.NET</p>
         </div>
     </header>
 
@@ -40,6 +40,9 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            crossorigin="anonymous"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

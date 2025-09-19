@@ -1,23 +1,37 @@
-//using Microsoft.AspNetCore.Mvc;
-//using Microsoft.AspNetCore.Mvc.RazorPages;
+using Controller;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Model;
 
-//public class CreateModel : PageModel
-//{
-//    private readonly ChamadoController _controller;
-//    [BindProperty]
-//    public Chamado Chamado { get; set; } = new();
+public class CreateModel : PageModel
+{
+    private readonly ChamadoController _controller;
 
-//    public CreateModel(ChamadoController controller)
-//    {
-//        _controller = controller;
-//    }
+    [BindProperty]
+    public Chamado chamado { get; set; } = new();
 
-//    public void OnGet() { }
+    public bool MostrarSucesso { get; private set; }
 
-//    public async Task<IActionResult> OnPostAsync()
-//    {
-//        if (!ModelState.IsValid) return Page();
-//        var newId = await _controller.InsertAsync(Chamado);
-//        return RedirectToPage("/Index");
-//    }
-//}
+    public CreateModel(ChamadoController controller) => _controller = controller;
+
+    public void OnGet() { }
+
+    public async Task<IActionResult> OnPostAsync()
+    {
+        if (!ModelState.IsValid) return Page();
+
+        var ok = await _controller.IncluirAsync(chamado.Descricao);
+
+        if (!ok)
+        {
+            ModelState.AddModelError(string.Empty, "Não foi possível incluir o chamado.");
+            return Page();
+        }
+
+        MostrarSucesso = true;
+        ModelState.Clear();
+        chamado = new Chamado();
+
+        return Page();
+    }
+}

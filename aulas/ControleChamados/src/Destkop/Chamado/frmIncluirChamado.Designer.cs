@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.lblDescricaoChamado = new System.Windows.Forms.Label();
-            this.txtDescricaoChamado = new System.Windows.Forms.TextBox();
+            this.txtDescricao = new System.Windows.Forms.TextBox();
             this.btnCadastrarChamado = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -42,12 +42,12 @@
             this.lblDescricaoChamado.TabIndex = 0;
             this.lblDescricaoChamado.Text = "Descrição Chamado:";
             // 
-            // txtDescricaoChamado
+            // txtDescricao
             // 
-            this.txtDescricaoChamado.Location = new System.Drawing.Point(149, 31);
-            this.txtDescricaoChamado.Name = "txtDescricaoChamado";
-            this.txtDescricaoChamado.Size = new System.Drawing.Size(337, 20);
-            this.txtDescricaoChamado.TabIndex = 1;
+            this.txtDescricao.Location = new System.Drawing.Point(149, 31);
+            this.txtDescricao.Name = "txtDescricao";
+            this.txtDescricao.Size = new System.Drawing.Size(337, 20);
+            this.txtDescricao.TabIndex = 1;
             // 
             // btnCadastrarChamado
             // 
@@ -65,7 +65,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnCadastrarChamado);
-            this.Controls.Add(this.txtDescricaoChamado);
+            this.Controls.Add(this.txtDescricao);
             this.Controls.Add(this.lblDescricaoChamado);
             this.Name = "frmIncluirChamado";
             this.Text = "Form1";
@@ -77,7 +77,7 @@
         #endregion
 
         private System.Windows.Forms.Label lblDescricaoChamado;
-        private System.Windows.Forms.TextBox txtDescricaoChamado;
+        private System.Windows.Forms.TextBox txtDescricao;
         private System.Windows.Forms.Button btnCadastrarChamado;
     }
 }

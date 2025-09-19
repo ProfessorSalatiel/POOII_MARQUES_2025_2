@@ -5,8 +5,7 @@
 }
 
 <div class="d-flex justify-content-between mb-3">
-    <h2>Lista de Chamados</h2>
-    <a class="btn btn-success" asp-page="/Create">Novo Chamado</a>
+    <h2>Lista de Chamados</h2>    
 </div>
 
 <table class="table table-hover table-striped">
@@ -23,15 +22,10 @@
     @foreach(var c in Model.Chamados)
     {
         <tr>
-            <td>@c.IdChamado</td>
-            <td>@c.DescChamado</td>
-            <td>@(c.StatusChamado ? "Fechado" : "Aberto")</td>
-            <td>@(c.DtCriacaoChamado?.ToString("g") ?? "-")</td>
-            <td>
-                <a class="btn btn-sm btn-primary" asp-page="/Edit" asp-route-id="@c.IdChamado">Editar</a>
-                <a class="btn btn-sm btn-info" asp-page="/Details" asp-route-id="@c.IdChamado">Detalhes</a>
-                <a class="btn btn-sm btn-danger" asp-page="/Delete" asp-route-id="@c.IdChamado">Excluir</a>
-            </td>
+            <td>@c.Id</td>
+            <td>@c.Descricao</td>
+            <td>@(c.Status ? "Fechado" : "Aberto")</td>
+            <td>@(c.DataCriacao.ToString("g") ?? "-")</td>
         </tr>
     }
     </tbody>
