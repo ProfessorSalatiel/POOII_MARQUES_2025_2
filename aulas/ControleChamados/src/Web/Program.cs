@@ -1,12 +1,12 @@
-
+using Controller;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Connection string - update with your DB server details
-builder.Configuration["ConnectionStrings:DefaultConnection"] = builder.Configuration.GetValue<string>("ConnectionStrings:DefaultConnection") ?? "Server=localhost;Database=SuporteUnip;Trusted_Connection=True;";
-
 builder.Services.AddRazorPages();
-//builder.Services.AddScoped<ChamadoController>();
+
+// injeta o controller com a connection string do appsettings
+builder.Services.AddScoped(sp =>
+    new ChamadoController(builder.Configuration.GetConnectionString("PROFSALATIEL")!));
 
 var app = builder.Build();
 
@@ -16,6 +16,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.MapRazorPages();

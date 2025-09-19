@@ -1,4 +1,5 @@
 @page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model CreateModel
 @{
     ViewData["Title"] = "Novo Chamado";
@@ -7,19 +8,54 @@
 <h2>Novo Chamado</h2>
 
 <form method="post" class="row g-3">
+    @Html.AntiForgeryToken()
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
     <div class="col-12">
-        <label class="form-label">Descrição</label>
-        <input asp-for="Chamado.DescChamado" class="form-control" maxlength="50" />
+        <label asp-for="chamado.Descricao" class="form-label"></label>
+        <input asp-for="chamado.Descricao" class="form-control" maxlength="50" />
+        <span asp-validation-for="chamado.Descricao" class="text-danger"></span>
     </div>
+
     <div class="col-6">
-        <label class="form-label">Status</label>
-        <select asp-for="Chamado.StatusChamado" class="form-select">
+        <label asp-for="chamado.Status" class="form-label">Status</label>
+        <select asp-for="chamado.Status" class="form-select">
             <option value="false">Aberto</option>
             <option value="true">Fechado</option>
         </select>
     </div>
+
     <div class="col-12">
-        <button class="btn btn-primary">Salvar</button>
+        <button type="submit" class="btn btn-primary">Salvar</button>
         <a asp-page="/Index" class="btn btn-secondary">Cancelar</a>
     </div>
 </form>
+
+<!-- Modal de sucesso -->
+<div class="modal fade" id="sucessoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Sucesso</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body">
+                Chamado incluído com sucesso!
+            </div>
+            <div class="modal-footer">
+                <a asp-page="/Index" class="btn btn-primary">Ir para a lista</a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Novo chamado</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var show = @(Model.MostrarSucesso ? "true" : "false");
+      if (show === true || show === "true") {
+        var modal = new bootstrap.Modal(document.getElementById('sucessoModal'));
+        modal.show();
+      }
+    });
+</script>
