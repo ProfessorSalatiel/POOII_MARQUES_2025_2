@@ -8,7 +8,7 @@ public class CreateModel : PageModel
     private readonly ChamadoController _controller;
 
     [BindProperty]
-    public Chamado chamado { get; set; } = new();
+    public ChamadoModel chamado { get; set; } = new();
 
     public bool MostrarSucesso { get; private set; }
 
@@ -30,7 +30,7 @@ public class CreateModel : PageModel
 
         MostrarSucesso = true;
         ModelState.Clear();
-        chamado = new Chamado();
+        chamado = new ChamadoModel();
 
         return Page();
     }

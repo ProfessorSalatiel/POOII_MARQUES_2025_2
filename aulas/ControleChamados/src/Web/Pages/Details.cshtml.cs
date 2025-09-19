@@ -5,7 +5,7 @@ using Model;
 public class DetailsModel : PageModel
 {
     private readonly ChamadoController _controller;
-    public Chamado Chamado { get; set; }
+    public ChamadoModel Chamado { get; set; }
 
     public DetailsModel(ChamadoController controller)
     {

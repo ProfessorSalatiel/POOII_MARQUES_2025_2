@@ -16,7 +16,7 @@ namespace Controller
             _connStr = connectionString ?? throw new ArgumentNullException(nameof(connectionString));
         }
 
-        public async Task<Chamado> BuscarPorIdAsync(long id)
+        public async Task<ChamadoModel> BuscarPorIdAsync(long id)
         {
             using (var conn = new SqlConnection(_connStr))
             {
@@ -35,7 +35,7 @@ namespace Controller
                     {
                         if (await reader.ReadAsync())
                         {
-                            return new Chamado
+                            return new ChamadoModel
                             {
                                 Id = reader.GetInt64(0),
                                 Descricao = reader.GetString(1),
@@ -48,6 +48,11 @@ namespace Controller
             }
 
             return null;
+        }
+        public bool atualizar(ChamadoModel chamado)
+        {
+            string descricao = chamado.Descricao;
+            return true;
         }
         public async Task<bool> IncluirAsync(string descricao)
         {
@@ -97,9 +102,9 @@ namespace Controller
                 }
             }
         }
-        public async Task<List<Chamado>> BuscarTodosAsync()
+        public async Task<List<ChamadoModel>> BuscarTodosAsync()
         {
-            var lista = new List<Chamado>();
+            var lista = new List<ChamadoModel>();
 
             using (var conn = new SqlConnection(_connStr))
             {
@@ -114,7 +119,7 @@ namespace Controller
                 {
                     while (await reader.ReadAsync())
                     {
-                        lista.Add(new Chamado
+                        lista.Add(new ChamadoModel
                         {
                             Id = reader.GetInt64(0),
                             Descricao = reader.GetString(1),
