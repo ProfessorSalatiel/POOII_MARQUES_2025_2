@@ -5,7 +5,7 @@ using Model;
 public class IndexModel : PageModel
 {
     private readonly ChamadoController _controller;
-    public List<Chamado> Chamados { get; set; } = new();
+    public List<ChamadoModel> Chamados { get; set; } = new();
 
     public IndexModel(ChamadoController controller)
     {
